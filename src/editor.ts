@@ -71,6 +71,17 @@ export class JkBmsCardEditor extends LitElement implements LovelaceCardEditor {
                                         }
                                     }
                                 },
+                                {
+                                    name: 'deltaVoltageUnit',
+                                    selector: {
+                                        select: {
+                                            options: [
+                                                { label: 'Volts (V)', value: 'V' },
+                                                { label: 'Millivolts (mV)', value: 'mV' }
+                                            ]
+                                        }
+                                    }
+                                },
                             ],
                         },
                     ],

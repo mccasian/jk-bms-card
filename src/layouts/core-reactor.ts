@@ -664,7 +664,7 @@ export class JkBmsCoreReactorLayout extends LitElement {
                             ${this._renderSparkline(EntityKey.delta_cell_voltage, '#41CD52')}
                             <div class="stat-label">Delta V:</div>
                             <div class="stat-value val-green clickable"
-                                 @click=${(e) => this._navigate(e, EntityKey.delta_cell_voltage)}>${this.maxDeltaV} V
+                                 @click=${(e) => this._navigate(e, EntityKey.delta_cell_voltage)}>${this._formatDeltaVoltage()}
                             </div>
                         </div>
                     </div>
@@ -677,6 +677,14 @@ export class JkBmsCoreReactorLayout extends LitElement {
 
             </ha-card>
         `;
+    }
+
+    private _formatDeltaVoltage(): string {
+        const unit = this.config.deltaVoltageUnit || 'V';
+        if (unit === 'mV') {
+            return `${(this.maxDeltaV * 1000).toFixed(1)} mV`;
+        }
+        return `${this.maxDeltaV.toFixed(3)} V`;
     }
 
     private calculateDynamicMinMax() {
